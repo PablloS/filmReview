@@ -24,6 +24,9 @@ export class Film {
 
     @Prop()
     director: string
+
+    @Prop()
+    poster: string
 }
 
 export const FilmSchema = SchemaFactory.createForClass(Film)

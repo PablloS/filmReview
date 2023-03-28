@@ -11,8 +11,6 @@ export class FilmService {
 
     constructor(@InjectModel('Film') private filmsModel: Model<filmDto>) { }
 
-    private readonly films: filmDto[] = []
-
     async getAllFilms(): Promise<filmDto[]> {
         const filmData = await this.filmsModel.find();
         if (!filmData || filmData.length == 0) {

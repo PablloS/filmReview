@@ -1,5 +1,6 @@
 
-export class UpdateFilmDto {
+export type Film = {
+    _id: string
     title: string
     synopsis: string
     rating: number
@@ -7,4 +8,5 @@ export class UpdateFilmDto {
     genre: string
     director: string
     poster: string
+    __v: number
 }

@@ -6,4 +6,5 @@ export class CreateFilmDto {
     year: number
     genre: string
     director: string
+    poster: string
 }
