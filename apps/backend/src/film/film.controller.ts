@@ -15,23 +15,23 @@ export class FilmController {
   }
 
   @Get(':id') 
-  getFilmByID(@Param('id') id: number) {
+  getFilmByID(@Param('id') id: string) {
     return this.filmService.getFilmById(id)
   }
 
   @Post()
-  async create(@Body() CreateFilmDto : CreateFilmDto) {
+  create(@Body() CreateFilmDto : CreateFilmDto) {
     this.filmService.create(CreateFilmDto)
   }
 
   @Put(':id')
-  update(@Param('id') id : number, @Body() UpdateFilmDto : UpdateFilmDto) {
+  update(@Param('id') id : string, @Body() UpdateFilmDto : UpdateFilmDto) {
     this.filmService.updateFilm(id, UpdateFilmDto)
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  delete(@Param('id') id : number) {
+  delete(@Param('id') id : string) {
     this.filmService.deleteFilm(id)
   }
 }
