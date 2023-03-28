@@ -1,12 +1,37 @@
+import { UpdateFilmDto } from './dto/update-film.dto';
+import { CreateFilmDto } from './dto/create-film.dto';
 import { FilmService } from './film.service';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Param } from '@nestjs/common';
+import { Delete, Post, Put } from '@nestjs/common/decorators/http/request-mapping.decorator';
+import { Body } from '@nestjs/common/decorators/http/route-params.decorator';
 
-@Controller()
+@Controller('films')
 export class FilmController {
-  constructor(private readonly filmService: FilmService) {}
+  constructor(private filmService: FilmService) {}
 
-  @Get('/films')
-  getData() {
-    return this.filmService.getFilms();
+  @Get()
+  getAllFilms() {
+    return this.filmService.getAllFilms();
+  }
+
+  @Get(':id') 
+  getFilmByID(@Param('id') id: number) {
+    return this.filmService.getFilmById(id)
+  }
+
+  @Post()
+  async create(@Body() CreateFilmDto : CreateFilmDto) {
+    this.filmService.create(CreateFilmDto)
+  }
+
+  @Put(':id')
+  update(@Param('id') id : number, @Body() UpdateFilmDto : UpdateFilmDto) {
+    this.filmService.updateFilm(id, UpdateFilmDto)
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  delete(@Param('id') id : number) {
+    this.filmService.deleteFilm(id)
   }
 }
