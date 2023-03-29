@@ -20,3 +20,7 @@ export type CreateFilmType = {
     director: string
     poster: string
 }
+
+export type sortField = {
+    sortfield: string, 
+}
