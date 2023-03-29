@@ -32,6 +32,7 @@
     margin: auto;
     display: flex;
     grid-gap: 60px; 
+    padding-bottom: 50px;
 }
 
 .film-page-descr {
@@ -52,4 +53,11 @@
 .film-component-card:hover{
     transform: scale(1.1);
     transition: all 0.3s linear;
+}
+
+.film-page-button {
+    width: 20%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
 }

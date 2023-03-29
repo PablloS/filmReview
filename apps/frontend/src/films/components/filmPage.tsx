@@ -1,7 +1,7 @@
-import { Descriptions } from "antd";
+import { Button, Descriptions } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { Film } from "../types";
 import Header from "./header";
 
@@ -12,16 +12,36 @@ export default function FilmPage() {
 
     const [film, setFilm] = useState<Film>()
 
+    const [filmRemoved, setFilmRemoved] = useState(false);
+
     useEffect(() => {
         axios.get(`http://localhost:4200/api/films/${id}`)
             .then((response) => {
                 setFilm(response.data)
+                console.log(film?.title)
+
             })
             .catch((err) => {
                 console.log(err)
             })
 
     }, [])
+
+    const deleteFilm = () => {
+        axios.delete(`http://localhost:4200/api/films/${id}`)
+            .then((response) => {
+                console.log(response.status)
+                alert("Вы успешно удалили фильм!")
+                setFilmRemoved(true)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    if (filmRemoved) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div className="film-page-wraper">
@@ -39,6 +59,12 @@ export default function FilmPage() {
                         <Descriptions.Item label="">{film?.synopsis}</Descriptions.Item>
                     </Descriptions>
                 </div>
+            </div>
+            <div className="film-page-button">
+                <Link to={`/update/${id}`}>
+                    <Button type="primary">Редактировать фильм</Button>
+                </Link>
+                <Button type="primary" onClick={deleteFilm}>Удалить фильм</Button>
             </div>
         </div>
     )

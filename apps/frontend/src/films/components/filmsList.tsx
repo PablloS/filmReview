@@ -14,7 +14,7 @@ export default function FilmsList() {
     useEffect(() => {
         axios.get('http://localhost:4200/api/films')
             .then((response) => {
-                setFilms(response.data)
+                setFilms(response.data.reverse())
             })
             .catch((err) => {
                 console.log(err)
