@@ -26,3 +26,30 @@
     font-size: 25px;
     align-content: center;
 }
+
+.film-page-content {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    grid-gap: 60px; 
+}
+
+.film-page-descr {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px; 
+}
+
+.film-page-title {
+    color: black;
+}
+
+.create-film-wrapper {
+    width: 80%;
+    margin: auto;
+}
+
+.film-component-card:hover{
+    transform: scale(1.1);
+    transition: all 0.3s linear;
+}

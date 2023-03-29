@@ -5,8 +5,8 @@ import { Film } from "../types";
 
 export default function FilmComponent(filmData: Film) {
     return (
-        <Card
-            style={{width: 250,}}
+        <Card className="film-component-card"
+            style={{width: 250, height: 470, }}
             cover={
                 <img 
                 alt="poster" 
