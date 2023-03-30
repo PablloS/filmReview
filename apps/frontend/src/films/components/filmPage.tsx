@@ -10,15 +10,14 @@ export default function FilmPage() {
 
     const { id } = useParams<{ id?: string }>();
 
-    const [film, setFilm] = useState<Film>()
-
     const [filmRemoved, setFilmRemoved] = useState(false);
+
+    const [film, setFilm] = useState<Film>()
 
     useEffect(() => {
         axios.get(`http://localhost:4200/api/films/${id}`)
             .then((response) => {
                 setFilm(response.data)
-                console.log(film?.title)
 
             })
             .catch((err) => {
